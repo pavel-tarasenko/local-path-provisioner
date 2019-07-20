@@ -25,7 +25,7 @@ Kubernetes v1.12+.
 In this setup, the directory `/opt/local-path-provisioner` will be used across all the nodes as the path for provisioning (a.k.a, store the persistent volume data). The provisioner will be installed in `local-path-storage` namespace by default.
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
+kubectl apply -f https://raw.githubusercontent.com/pavel-tarasenko/local-path-provisioner/master/deploy/local-path-storage.yaml
 ```
 
 After installation, you should see something like the following:
@@ -45,8 +45,8 @@ $ kubectl -n local-path-storage logs -f local-path-provisioner-d744ccf98-xfcbk
 Create a `hostPath` backed Persistent Volume and a pod uses it:
 
 ```
-kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pvc.yaml
-kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pod.yaml
+kubectl create -f https://raw.githubusercontent.com/pavel-tarasenko/local-path-provisioner/master/examples/pvc.yaml
+kubectl create -f https://raw.githubusercontent.com/pavel-tarasenko/local-path-provisioner/master/examples/pod.yaml
 ```
 
 You should see the PV has been created:
@@ -77,12 +77,12 @@ kubectl exec volume-test -- sh -c "echo local-path-test > /data/test"
 
 Now delete the pod using
 ```
-kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pod.yaml
+kubectl delete -f https://raw.githubusercontent.com/pavel-tarasenko/local-path-provisioner/master/examples/pod.yaml
 ```
 
 After confirm that the pod is gone, recreated the pod using
 ```
-kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pod.yaml
+kubectl create -f https://raw.githubusercontent.com/pavel-tarasenko/local-path-provisioner/master/examples/pod.yaml
 ```
 
 Check the volume content:
@@ -93,8 +93,8 @@ local-path-test
 
 Delete the pod and pvc
 ```
-kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pod.yaml
-kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pvc.yaml
+kubectl delete -f https://raw.githubusercontent.com/pavel-tarasenko/local-path-provisioner/master/examples/pod.yaml
+kubectl delete -f https://raw.githubusercontent.com/pavel-tarasenko/local-path-provisioner/master/examples/pvc.yaml
 ```
 
 The volume content stored on the node will be automatically cleaned up. You can check the log of `local-path-provisioner-xxx` for details.
@@ -169,7 +169,7 @@ Before uninstallation, make sure the PVs created by the provisioner has already 
 To uninstall, execute:
 
 ```
-kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
+kubectl delete -f https://raw.githubusercontent.com/pavel-tarasenko/local-path-provisioner/master/deploy/local-path-storage.yaml
 ```
 
 ## License
